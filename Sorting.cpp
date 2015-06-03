@@ -68,13 +68,21 @@ void selectionSortIter(int array[], int length) {
 
 /*
 Insertion Sort (Iterative)
+
+First element is a sorted 'sub-array'. Take second element and insert it in the correct place in the sub-array consisting of the first element.
+Now the first two elements are sorted. Take third element and insert in correct place in the sorted sub-array consisting of the first two elements. 
+Now the first three elements are sorted. Continue until all elements have been inserted in the right place into a sorted sub-array.
 */
 
 void insertionSort(int array[], int length) {
-
+	
 	for (int i = 1; i < length; i++) {
 		int numToSort = array[i];
+		// j represents the current spot the number to sorted will be placed in if there are no elements in the rest of the sub-array that are larger than it
 		int j = i;
+
+		// if the number to sort is less than the last element of the sorted 'sub-array', we move the last element further down
+		// repeat with second last element etc until we find an element larger than the number to sort, or we get to the beginning (no more elements)
 		while (j > 0 && numToSort < array[j - 1]) {
 			array[j] = array[j - 1];
 			j--;
