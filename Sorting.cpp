@@ -64,6 +64,16 @@ Insertion Sort
 
 void insertionSort(int array[], int length) {
 
+	for (int i = 1; i < length; i++) {
+		int numToSort = array[i];
+		int j = i;
+		while (j > 0 && numToSort < array[j - 1]) {
+			array[j] = array[j - 1];
+			j--;
+		}
+		array[j] = numToSort;
+
+	}
 }
 
 int main() {
@@ -81,6 +91,16 @@ int main() {
 	int array2[10] = { 1, 3, 5, 2, 4, 6, 10, 9, 8, 7 };
 	selectionSortRecur(array2, 10);
 	cout << "Recursive selection sort, result: ";
+	for (int i = 0; i < 10; i++) {
+		cout << array1[i] << " ";
+	}
+	cout << endl;
+
+
+	//Testing insertion sort
+	int array3[10] = { 1, 3, 5, 2, 4, 6, 10, 9, 8, 7 };
+	insertionSort(array3, 10);
+	cout << "Iterative insertion sort, result: ";
 	for (int i = 0; i < 10; i++) {
 		cout << array1[i] << " ";
 	}
