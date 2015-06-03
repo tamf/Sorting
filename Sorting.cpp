@@ -113,23 +113,31 @@ void quickSort(int array[], int length) {
 }
 
 void quickSortHelper(int array[], int start, int end) {
+	// base case
 	if (start >= end) {
 		return;
 	}
+	// choose a random index to get the pivot
 	srand(time(NULL));
 	int pivotIndex = rand() % (end - start + 1) + start;
 	int pivot = array[pivotIndex];
 
+	// move the pivot to the front
 	swap(array, start, pivotIndex);
 
+	// m represents where the pivot will go after all the elements have been compared
 	int m = start;
 
+	// we will put all elements that are smaller than the pivot at the front of the array
 	for (int i = start + 1; i <= end; i++) {
 		if (pivot > array[i]) {
 			swap(array, ++m, i);
 		}
 	}
+	// swapping the pivot to index m will result in all elements to the left of m being smaller or equal to m, and all elements to the right being larger or equal
 	swap(array, start, m);
+
+	// recursive calls
 	quickSortHelper(array, start, m - 1);
 	quickSortHelper(array, m + 1, end);
 }
