@@ -6,6 +6,9 @@ using namespace std;
 
 void selectionSortRecurHelper(int array[], int start, int end);
 
+
+
+
 /*
 Selection Sort (Recursive)
 */
@@ -40,10 +43,12 @@ void selectionSortRecurHelper(int array[], int start, int end) {
 	selectionSortRecurHelper(array, start + 1, end);
 }
 
+
+
+
 /*
 Selection Sort (Iterative)
 */
-
 void selectionSortIter(int array[], int length) {
 
 	// for every 'sub-array' that ends at the end of the initial array...
@@ -73,7 +78,6 @@ First element is a sorted 'sub-array'. Take second element and insert it in the 
 Now the first two elements are sorted. Take third element and insert in correct place in the sorted sub-array consisting of the first two elements. 
 Now the first three elements are sorted. Continue until all elements have been inserted in the right place into a sorted sub-array.
 */
-
 void insertionSort(int array[], int length) {
 	
 	for (int i = 1; i < length; i++) {
@@ -92,6 +96,9 @@ void insertionSort(int array[], int length) {
 	}
 }
 
+
+
+
 /*
 Swap values at two indices in an array of integers
 */
@@ -102,10 +109,12 @@ void swap(int array[], int x, int y) {
 	array[y] = temp;
 }
 
+
+
+
 /*
 Quick Sort (Recursive)
 */
-
 void quickSortHelper(int array[], int start, int end);
 
 void quickSort(int array[], int length) {
@@ -141,6 +150,13 @@ void quickSortHelper(int array[], int start, int end) {
 	quickSortHelper(array, start, m - 1);
 	quickSortHelper(array, m + 1, end);
 }
+
+
+
+
+
+
+
 
 int main() {
 	//Testing iterative selection sort
