@@ -99,18 +99,20 @@ void quickSort(int array[], int length) {
 }
 
 void quickSortHelper(int array[], int start, int end) {
-	if (start <= end) {
+	if (start >= end) {
 		return;
 	}
 	srand(time(NULL));
-	int pivotIndex = rand() % (end - start) + start;
+	int pivotIndex = rand() % (end - start + 1) + start;
 	int pivot = array[pivotIndex];
 
-	int m = start + 1;
+	swap(array, start, pivotIndex);
+
+	int m = start;
 
 	for (int i = start + 1; i <= end; i++) {
 		if (pivot > array[i]) {
-			swap(array, m++, i);
+			swap(array, ++m, i);
 		}
 	}
 	swap(array, start, m);
@@ -147,7 +149,7 @@ int main() {
 		cout << array3[i] << " ";
 	}
 	cout << endl;
-
+	
 	//Testing quick sort
 	int array4[10] = { 1, 3, 5, 2, 4, 6, 10, 3, 8, 7 };
 	quickSort(array4, 10);
@@ -156,6 +158,8 @@ int main() {
 		cout << array4[i] << " ";
 	}
 	cout << endl;
+
+	
 
 
 
