@@ -45,15 +45,21 @@ Selection Sort (Iterative)
 */
 
 void selectionSortIter(int array[], int length) {
+
+	// for every 'sub-array' that ends at the end of the initial array...
 	for (int start = 0; start < length - 1; start++) {
+		// Set the smallest element to the first element
 		int smallestElement = array[start];
 		int smallestElementIndex = start;
+
+		// Now find the real smallest element in the 'sub-array' from i to the end
 		for (int i = start + 1; i <= length - 1; i++) {
 			if (array[i] < smallestElement) {
 				smallestElementIndex = i;
 				smallestElement = array[i];
 			}
 		}
+		// swap first element of sub-array with smallest element
 		int temp = array[start];
 		array[start] = smallestElement;
 		array[smallestElementIndex] = temp;
