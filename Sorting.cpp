@@ -2,10 +2,15 @@
 
 using namespace std;
 
+void selectionSortRecurHelper(int array[], int start, int end);
+
 /*
 Selection Sort using Recursion
 */
-void selectionSortRecur(int array[], int start, int end) {
+void selectionSortRecur(int array[], int length) {
+	selectionSortRecurHelper(array, 0, length - 1);
+}
+void selectionSortRecurHelper(int array[], int start, int end) {
 
 	// if the array to sort is empty, already sorted
 	if (start == end) {
@@ -30,7 +35,7 @@ void selectionSortRecur(int array[], int start, int end) {
 	array[smallestElementIndex] = temp;
 
 	// recursive call to sort rest of the array
-	return selectionSortRecur(array, start + 1, end);
+	return selectionSortRecurHelper(array, start + 1, end);
 }
 
 /*
@@ -74,7 +79,7 @@ int main() {
 
 	//Testing recursive selection sort
 	int array2[10] = { 1, 3, 5, 2, 4, 6, 10, 9, 8, 7 };
-	selectionSortRecur(array2, 0, 9);
+	selectionSortRecur(array2, 10);
 	cout << "Recursive selection sort, result: ";
 	for (int i = 0; i < 10; i++) {
 		cout << array1[i] << " ";
