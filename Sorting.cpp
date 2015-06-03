@@ -1,4 +1,6 @@
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -77,23 +79,50 @@ void insertionSort(int array[], int length) {
 }
 
 /*
+Swap values at two indices in an array of integers
+*/
+
+void swap(int array[], int x, int y) {
+	int temp = array[x];
+	array[x] = array[y];
+	array[y] = temp;
+}
+
+/*
 Quick Sort (Recursive)
 */
+
+void quickSortHelper(int array[], int start, int end);
 
 void quickSort(int array[], int length) {
 	quickSortHelper(array, 0, length - 1);
 }
 
 void quickSortHelper(int array[], int start, int end) {
-	int mid = (start + end) / 2;
+	if (start <= end) {
+		return;
+	}
+	srand(time(NULL));
+	int pivotIndex = rand() % (end - start) + start;
+	int pivot = array[pivotIndex];
 
+	int m = start + 1;
+
+	for (int i = start + 1; i <= end; i++) {
+		if (pivot > array[i]) {
+			swap(array, m++, i);
+		}
+	}
+	swap(array, start, m);
+	quickSortHelper(array, start, m - 1);
+	quickSortHelper(array, m + 1, end);
 }
 
 int main() {
 	//Testing iterative selection sort
-	int array1[10] = { 2, 1, 5, 6, 8, 3, 4, 9, 7, 10 };
+	int array1[10] = { 2, 1, 5, 2, 8, 3, 4, 9, 7, 10 };
 	selectionSortIter(array1, 10);
-	cout << "Iterative selection sort, result: ";
+	cout << "Iterative selection sort, result: " << endl;
 	for (int i = 0; i < 10; i++) {
 		cout << array1[i] << " ";
 	}
@@ -101,23 +130,34 @@ int main() {
 
 
 	//Testing recursive selection sort
-	int array2[10] = { 1, 3, 5, 2, 4, 6, 10, 9, 8, 7 };
+	int array2[10] = { 1, 3, 5, 2, 4, 4, 10, 9, 8, 7 };
 	selectionSortRecur(array2, 10);
-	cout << "Recursive selection sort, result: ";
+	cout << "Recursive selection sort, result: " << endl;
 	for (int i = 0; i < 10; i++) {
-		cout << array1[i] << " ";
+		cout << array2[i] << " ";
 	}
 	cout << endl;
 
 
 	//Testing insertion sort
-	int array3[10] = { 1, 3, 5, 2, 4, 6, 10, 9, 8, 7 };
+	int array3[10] = { 1, 3, 5, 2, 4, 6, 10, 3, 8, 7 };
 	insertionSort(array3, 10);
-	cout << "Iterative insertion sort, result: ";
+	cout << "Iterative insertion sort, result: " << endl;
 	for (int i = 0; i < 10; i++) {
-		cout << array1[i] << " ";
+		cout << array3[i] << " ";
 	}
 	cout << endl;
+
+	//Testing quick sort
+	int array4[10] = { 1, 3, 5, 2, 4, 6, 10, 3, 8, 7 };
+	quickSort(array4, 10);
+	cout << "Iterative quick sort, result: " << endl;
+	for (int i = 0; i < 10; i++) {
+		cout << array4[i] << " ";
+	}
+	cout << endl;
+
+
 
 	cin.get();
 	return 0;
