@@ -5,7 +5,7 @@ using namespace std;
 void selectionSortRecurHelper(int array[], int start, int end);
 
 /*
-Selection Sort using Recursion
+Selection Sort (Recursive)
 */
 void selectionSortRecur(int array[], int length) {
 	selectionSortRecurHelper(array, 0, length - 1);
@@ -35,11 +35,11 @@ void selectionSortRecurHelper(int array[], int start, int end) {
 	array[smallestElementIndex] = temp;
 
 	// recursive call to sort rest of the array
-	return selectionSortRecurHelper(array, start + 1, end);
+	selectionSortRecurHelper(array, start + 1, end);
 }
 
 /*
-Selection Sort using Iteration
+Selection Sort (Iterative)
 */
 
 void selectionSortIter(int array[], int length) {
@@ -59,7 +59,7 @@ void selectionSortIter(int array[], int length) {
 }
 
 /*
-Insertion Sort
+Insertion Sort (Iterative)
 */
 
 void insertionSort(int array[], int length) {
@@ -74,6 +74,19 @@ void insertionSort(int array[], int length) {
 		array[j] = numToSort;
 
 	}
+}
+
+/*
+Quick Sort (Recursive)
+*/
+
+void quickSort(int array[], int length) {
+	quickSortHelper(array, 0, length - 1);
+}
+
+void quickSortHelper(int array[], int start, int end) {
+	int mid = (start + end) / 2;
+
 }
 
 int main() {
